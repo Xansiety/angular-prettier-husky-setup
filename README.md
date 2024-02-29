@@ -30,9 +30,9 @@ _Feel free to use the package manager of your choice to install the Angular CLI.
 
 ## 2. Install ESlint
 
-Angular nos provee de un poderoso ESlint, que nos ayuda a detectar y corregir los errores de nuestro código. Por lo tanto, vamos a instalarlo en el proyecto.
+Angular provides us with a powerful ESLint that helps us detect and correct errors in our code. Therefore, we are going to install it in the project.
 
-Para ello podemos guiarnos de la siguiente documentacion, para saber que version de ESlint nos ofrece:
+For this, we can refer to the following documentation to find out which version of ESLint it offers:
 
 > ng add @angular-eslint/schematics@12 #for angular 12
 
@@ -40,21 +40,21 @@ Para ello podemos guiarnos de la siguiente documentacion, para saber que version
 
 > ng add @angular-eslint/schematics@14 #for angular 14
 
-En este caso al trabajar con Angular 14, usamos la version 14. Por lo tanto, vamos a instalarlo:
+In this case, when working with Angular 14, we use version 14. Therefore, we are going to install it:
 
 ```bash
 ng add @angular-eslint/schematics@14
 ```
 
-Esto servirá para que automáticamente instale las dependencias necesarias y a su vez realice las configuraciones necesarias como añadir en `angular.json` el registro de los diferentes Schematics usados en la propiedad "schematicCollections" entre otros ajustes.
+This will automatically install the necessary dependencies and also perform the necessary configurations, such as adding the registration of the different Schematics used in the 'schematicCollections' property in 'angular.json', among other adjustments.
 
 ![alt text](image.png)
 
-Pero que cambios se hicieron, buenos analicemos los cambios que se hicieron en los archivos modificados:
+"But let's see what changes were made; let's analyze in detail the modifications made to the files."
 
-`.eslintrc.json`: En este archivo se encuentran las reglas del linter que usaremos para comprobar si el codigo cumple con las reglas establecidas, y en caso contrario darnos un feedback acerca de los errores que se han producido.
+`.eslintrc.json`: This file contains the rules of the linter that we will use to check if the code complies with the established rules, and if not, provide us with feedback about the errors that have occurred.
 
-Por defecto, el archivo `.eslintrc.json` se encuentra en el directorio raiz del proyecto y contiene la configuración por defecto.
+By default, the `.eslintrc.json` file is located in the root directory of the project and contains the default configuration.
 
 ```json
 {
@@ -99,29 +99,29 @@ Por defecto, el archivo `.eslintrc.json` se encuentra en el directorio raiz del 
 }
 ```
 
-`angular.json`: En este archivo se encuentra la configuración de la aplicación Angular, este archivo se modifica en automatico pata añadir el registro de las colecciones de schematics la información del schematics que acabamos de instalar
+`angular.json`: This file contains the configuration of the Angular application. It is automatically modified to add the registration of the schematics collections and information about the schematics we just installed.
 
 ![alt text](image-1.png)
 
-`package.json`: Se añadio un nuevo script llamado `ng lint` para que se ejecute el linter de Angular, asi como la actualizacion de las dependencias.
+`package.json`: A new script called `ng lint` was added to execute the Angular linter, along with the update of dependencies.
 
 ![alt text](image-2.png)
 
-Teniendo todos los cambios, podemos continuar con los siguientes pasos.
+With all the changes in place, we can proceed with the next steps.
 
-## 3. Instalar Prettier
+## 3. Install Prettier
 
-Para que se realice la corrección de los errores de nuestro código, vamos a instalar Prettier como una dependencia de desarrollo en nuestro proyecto, para ello vamos a utilizar el siguiente comando:
+To perform code error correction, we'll install Prettier as a development dependency in our project. To do this, we'll use the following command:
 
-_(siente libre de usar el gestor de paquetes que prefieras, en este caso y durante todo el resto del post, vamos a utilizar el gestor de paquetes de npm)_
+_(Feel free to use your preferred package manager. In this case, and throughout the rest of the post, we'll use npm as the package manager.)_
 
 ```bash
 npm install --save-dev prettier
 ```
 
-## 4. Configurar Prettier
+## 4. Configure Prettier
 
-Vamos a configurar Prettier para que se realice la corrección de los errores de nuestro código, para esto vamos a crear un archivo llamado `.prettierrc` en la raiz del proyecto, y añadiremos la siguiente configuración sugerida:
+Let's configure Prettier to perform code error correction. To do this, we'll create a file named `.prettierrc` in the root of the project directory, and we'll add the following suggested configuration:
 
 ```json
 {
@@ -135,21 +135,25 @@ Vamos a configurar Prettier para que se realice la corrección de los errores de
 }
 ```
 
-`printWidth`: Define el ancho máximo de línea antes de que Prettier haga saltos de línea automáticos para mantener el código dentro de este límite.
+`printWidth`: Defines the maximum line width before Prettier will break lines automatically to keep the code within this limit.
 
-`tabWidth`: Establece el ancho de tabulación, es decir, cuántos espacios representará un tabulador.
+`tabWidth`: Sets the width of a tab, i.e., how many spaces a tab represents.
 
-`tabs`: Un booleano que indica si se deben usar tabuladores en lugar de espacios.
+`tabs`: A boolean indicating whether tabs should be used instead of spaces..
 
-`singleQuote`: Un booleano que especifica si se deben usar comillas simples en lugar de comillas dobles para cadenas.
+`singleQuote`: A boolean specifying whether single quotes should be used instead of double quotes for strings..
 
-`semicolon`: Un booleano que indica si se deben incluir puntos y comas al final de las declaraciones.
+`semicolon`: A boolean indicating whether semicolons should be included at the end of statements.
 
-`quoteProps`: Define cómo Prettier manejará las comillas alrededor de los nombres de propiedad de objetos. En este caso, "preserve" significa que mantendrá las comillas si son necesarias para la compatibilidad con versiones anteriores.
+`quoteProps`: Defines how Prettier will handle quotes around object property names. In this case, 'preserve' means it will keep the quotes if they are needed for backward compatibility.
 
-`bracketSpacing`: Un booleano que indica si debe haber un espacio después de los paréntesis de apertura y antes de los paréntesis de cierre en los literales de objetos.
+`bracketSpacing`: A boolean indicating whether there should be a space after opening parentheses and before closing parentheses in object literals.
 
-Ahora crearemos un archivo en la raiz del proyecto llamado `.prettierignore` y anadiremos la siguiente configuración:
+---
+
+### `.prettierignore` Configuration:
+
+Now we'll create a file in the root of the project called .prettierignore and add the following configuration:
 
 ```prettier
 package.json
@@ -159,23 +163,21 @@ node_modules
 dist
 ```
 
-Esto permite que Prettier ignore los archivos que no queramos que se realicen la corrección de los errores de nuestro código, por lo que no deberemos de preocuparnos de que sean analizados por Prettier.
+This allows Prettier to ignore files that we don't want to be corrected for errors in our code, so we don't have to worry about them being analyzed by Prettier.
 
-## 5. Instalar Pretty Quick
+## 5. Install Pretty Quick
 
-Que es Pretty Quick?
+_Pretty Quick_ is a tool that combines two popular JavaScript tools: Prettier and ESLint, to format and lint your code efficiently. Prettier takes care of automatically formatting the code, while ESLint is used to perform static code analysis for errors or unwanted practices.
 
-Pretty Quick es una herramienta que combina dos herramientas populares de JavaScript: Prettier y ESLint, para formatear y revisar tu código de manera eficiente. Prettier se encarga del formateo automático del código, mientras que ESLint se utiliza para realizar verificaciones estáticas del código en busca de errores o prácticas no deseadas.
+_Pretty Quick_ simplifies the code formatting and linting process by running both tools in parallel. This means you can format and lint your code with a single command or easily integrate it into your development workflow.
 
-Pretty Quick simplifica el proceso de formateo y revisión del código al ejecutar ambas herramientas en paralelo. Esto significa que puedes formatear y revisar tu código con una sola línea de comando o integrarlo fácilmente en tu flujo de trabajo de desarrollo.
-
-Ademas solo queremos que prettier solo realice la correccion de errores en nuestros archivos modificados, en lugar de que ESLint realice la corrección de errores en todos los archivos del proyecto, es por ello que tambien Pretty Quick solo analizará los archivos modificados en nuestro proyecto, y para ello debemos ejecutar el siguiemnte comando para instalar Pretty Quick como una dependencia de desarrrollo en nuestro proyecto:
+Additionally, we only want Prettier to perform error correction on our modified files, instead of ESLint correcting errors in all files of the project. That's why Pretty Quick will also analyze only the modified files in our project. To achieve this, we need to execute the following command to install Pretty Quick as a development dependency in our project:
 
 ```bash
 npm install --save-dev pretty-quick
 ```
 
-Una vez instalado Pretty Quick, añadiremos un nuevo script en el archivo `package.json`, que se encargará de realizar la corrección de errores solo en los archivos que han sido preparados para ser confirmados en Git, con la ayuda de la bandera `--staged`.
+Once Pretty Quick is installed, we'll add a new script in the `package.json` file, which will be responsible for correcting errors only in the files that have been staged for commit in Git, using the `--staged` flag.
 
 ```json
 {
@@ -185,18 +187,18 @@ Una vez instalado Pretty Quick, añadiremos un nuevo script en el archivo `packa
 }
 ```
 
-# Instalar Husky
+# 6. Install Husky
 
-Bien, ahora podemos realizar la instalacion de Husky, por fin.
-Para ello debemos seguir la documentacion y ejecuar el siguiente comando:
+Alright, now we can finally proceed with installing Husky.
+To do this, we need to follow the documentation and execute the following command:
 
 ```bash
  npx husky-init && npm install
 ```
 
-Esto creara un nuevo directorio, en la raiz del proyecto, llamado `.husky`, y todos los archivos necesarios para que el comando `husky` funcione.
+This will create a new directory in the root of the project called `.husky`, along with all the necessary files for the `husky` command to work.
 
-Por defecto, dentro de estar carpeta encontraras un archivo llamado `pre-commit` con el siguiente contenido:
+By default, inside this folder, you will find a file named `pre-commit` with the following content:
 
 ```bash
 #!/usr/bin/env sh
@@ -205,7 +207,7 @@ Por defecto, dentro de estar carpeta encontraras un archivo llamado `pre-commit`
 npm test
 ```
 
-en donde reemplazamos `npm test` por el comando que queramos ejecutar, en este caso `npm run pretty-quick`.
+You replace `npm test` with the command you want to execute. In this case, you replace it with `npm run pretty-quick`.
 
 ```bash
 #!/usr/bin/env sh
@@ -214,9 +216,9 @@ en donde reemplazamos `npm test` por el comando que queramos ejecutar, en este c
 npm run pretty-quick
 ```
 
-Recuerda que este comando se añadio en el archivo `package.json`, en el paso #2.
+Remember, this command was added to the `package.json` file in step #2.
 
-Ahora añadiremos un nuevo archivo dentro de la misma carpeta `.husky` llamado `commit-msg` con el siguiente contenido:
+Now, we'll add a new file inside the same `.husky` folder called `commit-msg` with the following content:
 
 ```bash
 #!/usr/bin/env sh
@@ -225,7 +227,7 @@ Ahora añadiremos un nuevo archivo dentro de la misma carpeta `.husky` llamado `
 npm run lint
 ```
 
-_Nota: si en tu proyecto estas realizando pruebas unitarias, podrias añadir un nuevo archivo en la misma carpeta `.husky` llamado `pre-push` con el siguiente contenido:_
+_Note: If you're running unit tests in your project, you could add a new file in the same `.husky` folder called `pre-push` with the following content:_
 
 ```bash
 #!/usr/bin/env sh
@@ -234,15 +236,15 @@ _Nota: si en tu proyecto estas realizando pruebas unitarias, podrias añadir un 
 npm run test
 ```
 
-_para ejecutar las pruebas unitarias antes de realizar el push, a la rama remota de tu repositorio en la que estas trabajando_
+_to run unit tests before pushing to the remote branch of your repository where you're working._
 
-Para este ejemplo sencillo, solo utilizaremos los archivos `.husky/pre-commit` y `.husky/commit-msg`.
+For this simple example, we will only use the files `.husky/pre-commit` and `.husky/commit-msg`.
 
-# Probar la corrección de errores Prettier + ESLint + Husky
+# Testing Prettier + ESLint + Husky Error Correction
 
-Ahora que ya tenemos el proyecto listo para ejecutar los comandos de pre-commit y commit-msg, vamos a probar que todo funciona correctamente.
+Now that we have the project set up to run pre-commit and commit-msg commands, let's test that everything works correctly.
 
-Para ello vamos a crear un error en nuestra aplicacion, para ello nos iremos al archivo `app.component.html` y lo modificaremos de la siguiente manera:
+To do this, let's introduce an error in our application. We'll go to the `app.component.html` file and modify it as follows:
 
 ```html
 <h1>Angular 14 + Prettier + Husky</h1>
@@ -252,16 +254,52 @@ Para ello vamos a crear un error en nuestra aplicacion, para ello nos iremos al 
 </div>
 ```
 
-y en el archivo `app.component.ts`: implementaremos el cliclo de vida `OnInit`, pero dejaremos el contenido del ciclo de vida vacio para que el linter nos lo indique como un error.
+and in the `app.component.ts` file, we will implement the `OnInit` lifecycle hook, but we'll leave the content of the lifecycle hook empty so that the linter indicates it as an error.
 
 ![alt text](image-3.png)
 
-Bien, ahora es momento de probar que todo funcione correctamente, para lo cual con husky configurado, y utilizando los hook `pre-commit` y `commit-msg` vamos a ejeuctar los siguientes comandos:
+Alright, now it's time to test that everything works correctly. With Husky configured and using the `pre-commit` and `commit-msg` hooks, we'll execute the following commands:
 
-1. Añadiremos los archivos al staged de Git:
+1. We'll add the files to the Git staging area:
 
 ```bash
 git add .
 ```
 
-Esto nos permitirá confirmar que todos los archivos han sido preparados para ser confirmados por husky.
+This will allow us to confirm that all files have been staged for commit by Husky.
+
+2. We'll make the commit:
+
+```bash
+git commit -m "feat: Added Setup Prettier + ESLint + Husky"
+```
+
+This will format the code according to the rules established in the `.prettierrc` and `.eslintrc.json` files. Therefore, the HTML will be validated by Prettier and the `.eslintrc.json` file by ESLint, resulting in:
+
+```HTML
+<h1>Angular 14 + Prettier + Husky</h1>
+
+<div>
+  <span> Este es un texto que NO debe Ser Valido Para Nuestro Linter Prettier </span>
+</div>
+```
+
+However, when trying to commit with an error that we intentionally caused for testing purposes, the commit is not completed, and it indicates that the error occurred due to the correction of errors by Prettier and ESLint.
+
+![alt text](image-4.png)
+
+This personally seems incredible to me!
+
+Now we proceed to correct the errors.
+
+![alt text](image-5.png)
+
+We will try to create the commit again:
+
+![alt text](image-6.png)
+
+And in this case, the commit has been successfully completed, as the error correction has been performed properly, and the code complies with the established linter rules.
+
+## Conclusion
+
+Prettier + ESLint + Husky + Git + Git Hooks is a solution to automatically correct errors in an Angular 14 project. In addition to being an alternative to improve/detect error correction manually, these tools, like many others, are just a tool to detect the fire, not extinguish it. Therefore, despite being a great asset for our projects, we must not forget how important and careful we must be when creating incredible solutions/projects, whether they are personal or intended to help others.
